@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useState } from 'react'
 
@@ -10,6 +10,11 @@ const links = [
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   return (
     <section id="contact" style={{
@@ -106,42 +111,90 @@ export default function ContactSection() {
 
           {/* Right — Form */}
           <form
-            onSubmit={e => {
+            onSubmit={async e => {
               e.preventDefault()
-              setSubmitted(true)
+              setLoading(true)
+              setError('')
+              try {
+                const res = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ name, email, message }),
+                })
+                if (!res.ok) throw new Error('Request failed')
+                setSubmitted(true)
+                setName('')
+                setEmail('')
+                setMessage('')
+              } catch (err: any) {
+                setError(err?.message || 'Error sending message')
+              } finally {
+                setLoading(false)
+              }
             }}
             style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}
           >
-            {(['Name', 'Email'] as const).map(field => (
-              <div key={field} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <label style={{
+                fontFamily: 'var(--mono)',
+                fontSize: '11px',
+                color: 'var(--text-dim)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}>
+                Name
+              </label>
+              <input
+                value={name}
+                onChange={e => setName(e.target.value)}
+                type="text"
+                placeholder="Your name"
+                required
+                style={{
                   fontFamily: 'var(--mono)',
-                  fontSize: '11px',
-                  color: 'var(--text-dim)',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                }}>
-                  {field}
-                </label>
-                <input
-                  type={field === 'Email' ? 'email' : 'text'}
-                  placeholder={field === 'Email' ? 'you@company.com' : 'Your name'}
-                  required
-                  style={{
-                    fontFamily: 'var(--mono)',
-                    fontSize: '13px',
-                    color: 'var(--text)',
-                    background: 'var(--bg-card)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius)',
-                    padding: '10px 14px',
-                    outline: 'none',
-                  }}
-                  onFocus={e => e.currentTarget.style.borderColor = 'var(--accent)'}
-                  onBlur={e => e.currentTarget.style.borderColor = 'var(--border)'}
-                />
-              </div>
-            ))}
+                  fontSize: '13px',
+                  color: 'var(--text)',
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius)',
+                  padding: '10px 14px',
+                  outline: 'none',
+                }}
+                onFocus={e => e.currentTarget.style.borderColor = 'var(--accent)'}
+                onBlur={e => e.currentTarget.style.borderColor = 'var(--border)'}
+              />
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <label style={{
+                fontFamily: 'var(--mono)',
+                fontSize: '11px',
+                color: 'var(--text-dim)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}>
+                Email
+              </label>
+              <input
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                type="email"
+                placeholder="you@company.com"
+                required
+                style={{
+                  fontFamily: 'var(--mono)',
+                  fontSize: '13px',
+                  color: 'var(--text)',
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius)',
+                  padding: '10px 14px',
+                  outline: 'none',
+                }}
+                onFocus={e => e.currentTarget.style.borderColor = 'var(--accent)'}
+                onBlur={e => e.currentTarget.style.borderColor = 'var(--border)'}
+              />
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <label style={{
@@ -154,6 +207,8 @@ export default function ContactSection() {
                 Message
               </label>
               <textarea
+                value={message}
+                onChange={e => setMessage(e.target.value)}
                 placeholder="What are you working on?"
                 required
                 rows={4}
@@ -173,6 +228,8 @@ export default function ContactSection() {
               />
             </div>
 
+            {error && <div style={{ color: 'var(--red)', fontSize: '13px' }}>{error}</div>}
+
             <button
               type="submit"
               style={{
@@ -183,14 +240,14 @@ export default function ContactSection() {
                 border: 'none',
                 padding: '10px 20px',
                 borderRadius: 'var(--radius)',
-                cursor: submitted ? 'default' : 'pointer',
+                cursor: submitted || loading ? 'default' : 'pointer',
                 letterSpacing: '0.04em',
                 alignSelf: 'flex-start',
                 transition: 'background 0.2s, opacity 0.15s',
               }}
-              disabled={submitted}
+              disabled={submitted || loading}
             >
-              {submitted ? 'Sent ✓' : 'Send message →'}
+              {loading ? 'Sending…' : submitted ? 'Sent ✓' : 'Send message →'}
             </button>
           </form>
 
