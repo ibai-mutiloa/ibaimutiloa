@@ -23,9 +23,8 @@ export default function ProjectsSection() {
         </div>
 
         {/* Grid */}
-        <div style={{
+        <div className="projects-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(440px, 1fr))',
           gap: '1px',
           background: 'var(--border)',
           border: '1px solid var(--border)',

@@ -44,9 +44,8 @@ export default function ExperienceSection() {
         {/* Timeline */}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {experiences.map((exp, i) => (
-            <div key={i} style={{
+            <div key={i} className="timeline-row" style={{
               display: 'grid',
-              gridTemplateColumns: '140px 1fr',
               gap: '0 32px',
               padding: '28px 0',
               borderBottom: i < experiences.length - 1 ? '1px solid var(--border)' : 'none',

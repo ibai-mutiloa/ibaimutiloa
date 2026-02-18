@@ -94,3 +94,34 @@ body::before {
   background: rgba(59, 130, 246, 0.25);
   color: var(--text);
 }
+
+/* Responsive grid helpers */
+.projects-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.two-col-grid {
+  grid-template-columns: 1fr 1fr;
+}
+.timeline-row {
+  grid-template-columns: 140px 1fr;
+}
+
+/* Allow grid children to shrink properly to avoid overflow */
+.projects-grid > *, .two-col-grid > *, .timeline-row > * {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  .two-col-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline-row {
+    grid-template-columns: 1fr;
+  }
+  .timeline-row > span {
+    padding-bottom: 8px;
+  }
+}

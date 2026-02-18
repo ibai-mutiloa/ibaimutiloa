@@ -38,9 +38,8 @@ export default function AboutSection() {
         </div>
 
         {/* Grid */}
-        <div style={{
+        <div className="two-col-grid" style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
           gap: '1px',
           background: 'var(--border)',
           border: '1px solid var(--border)',

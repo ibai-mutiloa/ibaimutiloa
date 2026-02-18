@@ -39,9 +39,8 @@ export default function ContactSection() {
           <span style={{ flex: 1, height: '1px', background: 'var(--border)' }} />
         </div>
 
-        <div style={{
+        <div className="two-col-grid" style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
           gap: '60px',
           alignItems: 'start',
         }}>
