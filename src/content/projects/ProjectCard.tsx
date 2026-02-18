@@ -9,8 +9,8 @@ const statusStyles: Record<string, { label: string; color: string; bg: string; b
     bg: 'rgba(34,197,94,0.1)',
     border: 'rgba(34,197,94,0.25)',
   },
-  development: {
-    label: 'In Development',
+  'side-project': {
+    label: 'Side Project',
     color: '#f59e0b',
     bg: 'rgba(245,158,11,0.1)',
     border: 'rgba(245,158,11,0.25)',

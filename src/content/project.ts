@@ -1,4 +1,4 @@
-export type ProjectStatus = 'production' | 'development' | 'open-source'
+export type ProjectStatus = 'production' | 'side-project' | 'open-source'
 
 export interface ProjectMetric {
   value: string
@@ -26,7 +26,6 @@ export const projects: Project[] = [
       'End-to-end Retrieval-Augmented Generation system deployed on university intranet. Document ingestion pipeline, vector storage with pgvector, semantic retrieval, and LLM response synthesis with context grounding.',
     metrics: [
       { value: '200+', label: 'Daily users' },
-      { value: '<400ms', label: 'P95 latency' },
       { value: 'pgvector', label: 'Vector store' },
     ],
     stack: ['FastAPI', 'PostgreSQL', 'pgvector', 'Docker', 'Azure', 'LLM'],
@@ -44,14 +43,14 @@ export const projects: Project[] = [
       { value: 'TOTP', label: 'MFA method' },
       { value: '0', label: 'Incidents post-deploy' },
     ],
-    stack: ['Python', 'OIDC', 'TOTP', 'JWT', 'Linux'],
+    stack: ['OIDC', 'TOTP', 'JWT', 'Linux'],
     featured: true,
   },
   {
     slug: 'lez-guard',
     title: 'LEZGuard — Emissions Prediction',
     type: 'ML / Prediction',
-    status: 'open-source',
+    status: 'side-project',
     shortDescription:
       'Machine learning pipeline to predict vehicle emissions and compliance with Low Emission Zone regulations. Feature engineering from traffic and environmental data, model evaluation and API exposure.',
     metrics: [
@@ -66,16 +65,15 @@ export const projects: Project[] = [
     slug: 'solraise',
     title: 'Solraise — Web Platform',
     type: 'Full Stack Platform',
-    status: 'development',
+    status: 'side-project',
     shortDescription:
       'Full-stack web platform with a modern backend architecture, user management, observability stack (Grafana + Matomo), and containerised deployment. Designed for horizontal scaling from day one.',
     metrics: [
-      { value: 'Grafana', label: 'Observability' },
+      { value: 'Node.js', label: 'Backend' },
       { value: 'Docker', label: 'Containers' },
-      { value: 'Matomo', label: 'Analytics' },
     ],
     stack: ['Node.js', 'Docker', 'Grafana', 'Matomo', 'PostgreSQL'],
-    featured: false,
+    featured: true,
   },
   {
     slug: 'moodle-plugins',
@@ -89,7 +87,7 @@ export const projects: Project[] = [
       { value: 'Moodle', label: 'Platform' },
       { value: 'APIs', label: 'External integration' },
     ],
-    stack: ['PHP', 'Moodle API', 'MySQL', 'REST'],
+    stack: ['PHP', 'Moodle API', 'PostgreSQL', 'REST'],
     featured: false,
   },
   {
@@ -104,7 +102,7 @@ export const projects: Project[] = [
       { value: 'Alerts', label: 'Threshold rules' },
       { value: 'SLO', label: 'Defined & tracked' },
     ],
-    stack: ['Grafana', 'Prometheus', 'Matomo', 'Docker', 'Linux'],
+    stack: ['Grafana', 'Prometheus', 'Matomo', 'Docker', 'Linux', 'Jenkins'],
     featured: false,
   },
 ]

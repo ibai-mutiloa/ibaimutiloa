@@ -1,27 +1,19 @@
 const experiences = [
   {
-    date: '2023 — Present',
+    date: 'sept. 2025 — Present',
     company: 'University / Institutional',
-    role: 'Backend & AI Systems Engineer',
+    role: 'Software Developer | Azure, Docker, RAG Systems',
     description:
-      'Designed and shipped a production RAG system serving 200+ daily users on university intranet. Implemented modern authentication (OIDC, MFA), observability infrastructure (Grafana, Matomo), and developed Moodle plugins for LMS workflow automation.',
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Docker', 'Azure', 'PHP/Moodle'],
+      'Development of a Retrieval-Augmented Generation (RAG) system integrating university regulations into a legacy intranet used daily by 200+ employees. Implemented vector search with pgvector, secured platform access with OIDC/MFA, and set up observability and analytics using Grafana and Matomo. Collaborated with cross-functional teams and supported CI/CD and containerized deployments.',
+    stack: ['Python', 'pgvector', 'RAG', 'Azure', 'Docker', 'Grafana', 'Matomo', 'OIDC', 'PostgreSQL'],
   },
   {
-    date: '2022 — 2023',
-    company: 'LEZGuard Project',
-    role: 'ML Engineer & Backend Developer',
+    date: 'oct. 2024 — July 2025',
+    company: 'University / Institutional',
+    role: 'Software Development Intern | PHP, Moodle, Grafana',
     description:
-      'Built an end-to-end ML pipeline for vehicle emissions prediction in Low Emission Zones. Feature engineering, model training, evaluation, and REST API exposure via FastAPI with CI/CD through Jenkins.',
-    stack: ['Python', 'Scikit-learn', 'FastAPI', 'Jenkins', 'Docker'],
-  },
-  {
-    date: '2022 — Present',
-    company: 'Solraise',
-    role: 'Full-Stack Developer & Infrastructure',
-    description:
-      'Designing and developing a scalable web platform from scratch. Responsible for backend architecture, containerised deployment, observability stack, and analytics infrastructure. Emphasis on operations-readiness from day one.',
-    stack: ['Node.js', 'Docker', 'Grafana', 'Matomo', 'Linux'],
+      'Software development intern contributing to web applications and Moodle-related features. Supported PHP-based developments, improved functionality and user experience for students and staff, and assisted with maintenance and deployments.',
+    stack: ['PHP', 'Moodle', 'Grafana', 'Docker', 'PostgreSQL'],
   },
 ]
 
