@@ -6,6 +6,7 @@ import ExperienceSection from '@/components/experience/ExperienceSection'
 import AboutSection from '@/components/about/AboutSection'
 import ContactSection from '@/components/contact/ContactSection'
 import Footer from '@/components/layout/Footer'
+import ChatWidget from '@/components/chat/ChatWidget'
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <AboutSection />
       <ContactSection />
       <Footer />
+      <ChatWidget />
     </main>
   )
 }
